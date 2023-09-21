@@ -13,3 +13,11 @@ https://reactnativepaper.com/
 
 run the command in terminal:
 $ npm i react-native-paper
+
+
+if you use the [rfce] command in your text editor, you easly exisis
+the initial code of react 
+
+
+if you use the [rnfe] command in your text editor, you are easly exisis
+the initial code of react-native 
