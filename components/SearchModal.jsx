@@ -69,6 +69,7 @@ const SearchModal = ({
                                     imgSrc={i.images[0]?.url}
                                     name={i.name}
                                     price={i.price}
+                                    stock={i.stock}
                                     handler={
                                         () => navigate.navigate("productdetails", { id: i._id })
                                     }
@@ -88,7 +89,7 @@ const SearchModal = ({
 }
 
 
-const SearchItem = ({ price, name, imgSrc, handler }) => (
+const SearchItem = ({ price, name, imgSrc, stock, handler }) => (
     <TouchableOpacity onPress={handler}>
         <View style={{
             padding: 20,
@@ -123,7 +124,8 @@ const SearchItem = ({ price, name, imgSrc, handler }) => (
                     width: "80%",
                     paddingHorizontal: 30
                 }}>
-                <Text numberOfLines={1}>{name}</Text>
+                <Text numberOfLines={1}>Product Name:  {name}</Text>
+                <Text numberOfLines={1}>Stock: {stock}</Text>
                 <Headline
                     numberOfLines={1}
                     style={{
