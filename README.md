@@ -26,3 +26,8 @@ the initial code of react-native
 
 install the caroshell using this command [npm i react-native-snap-carousel@4.0.0-
 beta.6] if you know that more of caroshell go to this page : https://www.npmjs.com/package/react-native-snap-carousel
+
+
+
+i am use the toast method see the messages, if you more go to here: https://www.npmjs.com/package/react-native-toast-message
+simple follow the instaration of documentations 

@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './screens/Home';
 import ProductDetails from './screens/ProductDetails';
-
+import Toast from 'react-native-toast-message';
 
 const Stack = createNativeStackNavigator()
 
@@ -23,6 +23,8 @@ function Main() {
                 <Stack.Screen name='productdetails' component={ProductDetails}></Stack.Screen>
             </Stack.Group>
         </Stack.Navigator>
+        
+        <Toast position='top' topOffset={40}  />
     </NavigationContainer>
     
 

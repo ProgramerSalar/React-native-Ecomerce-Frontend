@@ -4,6 +4,7 @@ import { colors, defaultStyle } from '../styles/styles'
 import Header from '../components/Header'
 import Carousel from 'react-native-snap-carousel';
 import { Avatar, Button } from 'react-native-paper';
+import Toast from 'react-native-toast-message';
 
 
 const SLIDER_WIDTH = Dimensions.get("window").width;
@@ -61,8 +62,15 @@ const ProductDetails = ({ route: { params } }) => {
 
 
   const addToCardHandler = () => {
-    if(stock === 0) return
-    console.log("Adding To Card", quantity) 
+    if(stock === 0) return Toast.show({
+      type:"error",
+      text1:"out of Stock",
+    })
+    // console.log("Adding To Card", quantity) 
+    Toast.show({
+      type:"success",
+      text1:'Added to Cart'
+    })
   }
 
 
