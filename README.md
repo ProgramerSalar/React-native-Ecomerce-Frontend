@@ -21,3 +21,8 @@ the initial code of react
 
 if you use the [rnfe] command in your text editor, you are easly exisis
 the initial code of react-native 
+
+
+
+install the caroshell using this command [npm i react-native-snap-carousel@4.0.0-
+beta.6] if you know that more of caroshell go to this page : https://www.npmjs.com/package/react-native-snap-carousel
