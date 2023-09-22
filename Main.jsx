@@ -5,6 +5,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './screens/Home';
 import ProductDetails from './screens/ProductDetails';
 import Toast from 'react-native-toast-message';
+import Cart from './screens/Cart';
+import ConfirmOrder from './screens/ConfirmOrder';
 
 const Stack = createNativeStackNavigator()
 
@@ -19,8 +21,12 @@ function Main() {
         }}
         >
             <Stack.Group>
+
                 <Stack.Screen name='home' component={Home}></Stack.Screen>
                 <Stack.Screen name='productdetails' component={ProductDetails}></Stack.Screen>
+                <Stack.Screen name='cart' component={Cart}></Stack.Screen>
+                <Stack.Screen name='confirmorder' component={ConfirmOrder}></Stack.Screen>
+
             </Stack.Group>
         </Stack.Navigator>
         

@@ -51,30 +51,30 @@ const ProductDetails = ({ route: { params } }) => {
 
 
   const incrementQty = () => {
-    if(stock <= quantity) return;
+    if (stock <= quantity) return;
     setQuantity((prev) => prev + 1)
   }
 
   const decrementQty = () => {
-    if(quantity <= 1) return; 
-    setQuantity((prev) => prev - 1 )
+    if (quantity <= 1) return;
+    setQuantity((prev) => prev - 1)
   }
 
 
   const addToCardHandler = () => {
-    if(stock === 0) return Toast.show({
-      type:"error",
-      text1:"out of Stock",
+    if (stock === 0) return Toast.show({
+      type: "error",
+      text1: "out of Stock",
     })
     // console.log("Adding To Card", quantity) 
     Toast.show({
-      type:"success",
-      text1:'Added to Cart'
+      type: "success",
+      text1: 'Added to Cart'
     })
   }
 
 
-  
+
 
 
   return (
@@ -165,7 +165,7 @@ const ProductDetails = ({ route: { params } }) => {
           </View>
         </View>
 
-        <TouchableOpacity activeOpacity={0.9} onPress={addToCardHandler}> 
+        <TouchableOpacity activeOpacity={0.9} onPress={addToCardHandler}>
           <Button icon={"cart"} style={style.btn} textColor={colors.color2}>
             Add To Cart
           </Button>

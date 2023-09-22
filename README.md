@@ -31,3 +31,5 @@ beta.6] if you know that more of caroshell go to this page : https://www.npmjs.c
 
 i am use the toast method see the messages, if you more go to here: https://www.npmjs.com/package/react-native-toast-message
 simple follow the instaration of documentations 
+
+
