@@ -15,6 +15,7 @@ const CartItem = ({
     id,
     decrementHandler,
     incrementhandler,
+    navigate,
 }) => {
     return (
         <View style={{
@@ -31,12 +32,14 @@ const CartItem = ({
             }}>
 
                 <Image
+                
                     source={{
                         uri: imgSrc
                     }}
                     style={
                         styles.img
                     }
+                    
                 />
 
             </View >
@@ -50,7 +53,9 @@ const CartItem = ({
                 numberOfLines={1}
                 style={{
                     fontSize: 17,
-                }} >{name}</Text>
+                }} 
+                onPress={() => navigate.navigate('productdetails', {id})}
+                >{name}</Text>
 
 
                 <Text 

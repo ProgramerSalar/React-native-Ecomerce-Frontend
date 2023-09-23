@@ -91,3 +91,4 @@ export const formStyles = StyleSheet.create({
 })
 
 
+export const defaultImg = "https://cdn.iconscout.com/icon/free/png-512/avatar-370-456322.png"

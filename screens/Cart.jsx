@@ -34,13 +34,13 @@ const Cart = () => {
 
 
     const decrementHandler = (id, qty, stock) => {
-        console.log("Increasing", id,qty,stock)
+        console.log("Increasing", id, qty, stock)
 
     }
 
 
     const incrementHandler = (id, qty, stock) => {
-        console.log("decreasing", id,stock, qty)
+        console.log("decreasing", id, stock, qty)
 
     }
     return (
@@ -68,6 +68,7 @@ const Cart = () => {
                     {
                         cartItems.map((i, index) => (
                             <CartItem
+                                navigate={navigate}
                                 key={i.product}
                                 id={i.product}
                                 name={i.name}
@@ -104,23 +105,23 @@ const Cart = () => {
             </View>
 
             <TouchableOpacity
-        onPress={
-          cartItems.length > 0 ? () => navigate.navigate("confirmorder") : null
-        }
-      >
-        <Button
-          style={{
-            backgroundColor: colors.color3,
-            borderRadius: 100,
-            padding: 5,
-            margin: 30,
-          }}
-          icon={"cart"}
-          textColor={colors.color2}
-        >
-          Checkout
-        </Button>
-      </TouchableOpacity>
+                onPress={
+                    cartItems.length > 0 ? () => navigate.navigate("confirmorder") : null
+                }
+            >
+                <Button
+                    style={{
+                        backgroundColor: colors.color3,
+                        borderRadius: 100,
+                        padding: 5,
+                        margin: 30,
+                    }}
+                    icon={"cart"}
+                    textColor={colors.color2}
+                >
+                    Checkout
+                </Button>
+            </TouchableOpacity>
 
 
 
