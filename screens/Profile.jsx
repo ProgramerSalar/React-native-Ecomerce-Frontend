@@ -14,9 +14,41 @@ const Profile = ({ navigation }) => {
     name: "Manish",
     email: "manishkumar@gmail.com",
   };
-  const navigateHandler = () => { }
+
+  const logoutHandler = () => {
+    console.log('sign Out')
+  }
+
+
+
+  const navigateHandler = (text) => {
+    switch (text) {
+      case "Admin":
+        navigation.navigate("adminpanel");
+        break;
+      case "Orders":
+        navigation.navigate("orders");
+        break;
+      case "Profile":
+        navigation.navigate("updateprofile");
+        break;
+      case "Password":
+        navigation.navigate("changepassword");
+        break;
+      case "Sign Out":
+        logoutHandler();
+        break;
+
+      default:
+      case "Orders":
+        navigation.navigate("orders");
+        break;
+    }
+  };
 
   const loading = false
+
+
 
   return (
     <>
@@ -31,72 +63,72 @@ const Profile = ({ navigation }) => {
 
         {
           loading ? <Loader /> :
-          <>
-          <View style={styles.container}>
-          <Avatar.Image
-            size={100}
-            style={{ backgroundColor: colors.color1 }}
-            source={{
-              uri: avatar,
-            }}
-          />
+            <>
+              <View style={styles.container}>
+                <Avatar.Image
+                  size={100}
+                  style={{ backgroundColor: colors.color1 }}
+                  source={{
+                    uri: avatar,
+                  }}
+                />
 
-          <TouchableOpacity
-            onPress={() => navigation.navigate("camera", { updateProfile: true })}
-          >
-            <Button textColor={colors.color1}>Chanage Photo</Button>
-          </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("camera", { updateProfile: true })}
+                >
+                  <Button textColor={colors.color1}>Chanage Photo</Button>
+                </TouchableOpacity>
 
-          <Text style={styles.name}>{user?.name}</Text>
-          <Text
-            style={{
-              fontWeight: "300",
-              color: colors.color2,
-            }}
-          >
-            {user?.email}
-          </Text>
-        </View>
-        <View>
-          <View
-            style={{
-              flexDirection: "row",
-              margin: 10,
-              justifyContent: "space-between",
-            }}
-          >
-            <ButtonBox handler={navigateHandler} text={'Orders'} icon={'format-list-bulleted-square'} />
-            <ButtonBox handler={navigateHandler} text={'Admin'} icon={'view-dashboard'} reverse={true} />
-            <ButtonBox handler={navigateHandler} text={'Profile'} icon={'pencil'} />
-
-
-
-
-
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              margin: 10,
-              justifyContent: "space-evenly",
-            }}
-          >
-            <ButtonBox handler={navigateHandler} text={'Password'} icon={'pencil'} />
-            <ButtonBox handler={navigateHandler} text={'Sign Out'} icon={'exit-to-app'} />
+                <Text style={styles.name}>{user?.name}</Text>
+                <Text
+                  style={{
+                    fontWeight: "300",
+                    color: colors.color2,
+                  }}
+                >
+                  {user?.email}
+                </Text>
+              </View>
+              <View>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    margin: 10,
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <ButtonBox handler={navigateHandler} text={'Orders'} icon={'format-list-bulleted-square'} />
+                  <ButtonBox handler={navigateHandler} text={'Admin'} icon={'view-dashboard'} reverse={true} />
+                  <ButtonBox handler={navigateHandler} text={'Profile'} icon={'pencil'} />
 
 
 
 
 
+                </View>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    margin: 10,
+                    justifyContent: "space-evenly",
+                  }}
+                >
+                  <ButtonBox handler={navigateHandler} text={'Password'} icon={'pencil'} />
+                  <ButtonBox handler={navigateHandler} text={'Sign Out'} icon={'exit-to-app'} />
 
-          </View>
 
 
-        </View>
-          
-          </>
+
+
+
+                </View>
+
+
+              </View>
+
+            </>
         }
-        
+
 
 
 

@@ -12,6 +12,7 @@ const ButtonBox = ({icon, text, handler, reverse=false, loading=false}) => {
         borderRadius: 20,
         alignItems: "center",
       }}
+      activeOpacity={1}
       onPress={() => handler(text)}
       disabled={loading}
 

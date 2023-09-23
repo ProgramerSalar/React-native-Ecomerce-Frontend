@@ -13,6 +13,8 @@ import ForgetPassword from './screens/ForgetPassword';
 import Verify from './screens/Verify';
 import SignUp from './screens/SignUp';
 import Profile from './screens/Profile';
+import UpdateProfile from './screens/UpdateProfile';
+import ChangePassword from './screens/ChangePassword';
 
 const Stack = createNativeStackNavigator()
 
@@ -36,6 +38,8 @@ function Main() {
                 <Stack.Screen name='login' component={Login}></Stack.Screen>
                 <Stack.Screen name='signup' component={SignUp}></Stack.Screen>
                 <Stack.Screen name='profile' component={Profile}></Stack.Screen>
+                <Stack.Screen name='updateprofile' component={UpdateProfile}></Stack.Screen>
+                <Stack.Screen name='changepassword' component={ChangePassword}></Stack.Screen>
 
                 {/* Password Reseting Route  */}
                 <Stack.Screen name='forgetpassword' component={ForgetPassword}></Stack.Screen>
