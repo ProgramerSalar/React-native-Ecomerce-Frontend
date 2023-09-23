@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import { colors, defaultStyle, formHeading, formStyles, inputOptions, inputStyling } from "../styles/styles";
 import { Button, TextInput } from 'react-native-paper';
@@ -38,50 +38,57 @@ const Verify = ({ navigation }) => {
                     <Text style={formHeading}>Reset Password</Text>
                 </View>
 
-                <View style={formStyles.container}>
+                <ScrollView showsVerticalScrollIndicator={false}>
+
+                    <View style={{...formStyles.container, minHeight:500}}>
 
 
-                    <TextInput {...inputOptions}
-                        placeholder='OTP'
-                        value={otp}
-                        onChangeText={setOtp}
-                        keyboardType='number-pad'
-                    />
+                        <TextInput {...inputOptions}
+                            placeholder='OTP'
+                            value={otp}
+                            onChangeText={setOtp}
+                            keyboardType='number-pad'
+                        />
 
-                    <TextInput {...inputOptions}
-                        placeholder='New Password'
-                        value={password}
-                        onChangeText={setPassword}
-                        secureTextEntry={true}
+                        <TextInput {...inputOptions}
+                            placeholder='New Password'
+                            value={password}
+                            onChangeText={setPassword}
+                            secureTextEntry={true}
 
-                    />
-
-
+                        />
 
 
 
 
-                    <Button
-                        textColor={colors.color2}
-                        disabled={otp === "" || password === ""}
-                        onPress={submitHandler}
-                        style={formStyles.btn}
-                        loading={loading}
-                    >
-                        Reset 
-                    </Button>
-
-                    <Text style={formStyles.or}>OR</Text>
-
-                    <TouchableOpacity
-                        activeOpacity={0.8}
-                        onPress={() => navigation.navigate('forgetpassword')}
-                    >
-                        <Text style={formStyles.link}>Resend OTP</Text>
-                    </TouchableOpacity>
 
 
-                </View>
+                        <Button
+                            textColor={colors.color2}
+                            disabled={otp === "" || password === ""}
+                            onPress={submitHandler}
+                            style={formStyles.btn}
+                            loading={loading}
+                        >
+                            Reset
+                        </Button>
+
+                        <Text style={formStyles.or}>OR</Text>
+
+                        <TouchableOpacity
+                            activeOpacity={0.8}
+                            onPress={() => navigation.navigate('forgetpassword')}
+                        >
+                            <Text style={formStyles.link}>Resend OTP</Text>
+                        </TouchableOpacity>
+
+
+                    </View>
+
+
+                </ScrollView>
+
+
 
 
 

@@ -8,7 +8,7 @@ const Footer = ({ activeRoute = 'home' }) => {
 
     const navigate = useNavigation()
     const loading = false // this show the database is connected or not 
-    const isAuthenticated = false;   // authenticated are false go to the login page 
+    const isAuthenticated = true;   // authenticated are false go to the login page 
 
 
 
@@ -16,19 +16,19 @@ const Footer = ({ activeRoute = 'home' }) => {
 
         switch (key) {
             case 0:
-              navigate.navigate("home");
-              break;
+                navigate.navigate("home");
+                break;
             case 1:
-              navigate.navigate("cart");
-              break;
+                navigate.navigate("cart");
+                break;
             case 2:
-              if (isAuthenticated) navigate.navigate("profile");
-              else navigate.navigate("login");
-              break;
+                if (isAuthenticated) navigate.navigate("profile");
+                else navigate.navigate("login");
+                break;
             default:
-              navigate.navigate("home");
-              break;
-          }
+                navigate.navigate("home");
+                break;
+        }
 
     }
 
@@ -60,7 +60,7 @@ const Footer = ({ activeRoute = 'home' }) => {
                 <TouchableOpacity activeOpacity={0.8} onPress={() => navigationHandler(1)}>
                     <Avatar.Icon icon={activeRoute === "cart" ? "shopping" : "shopping-outline"}
                         {
-                            ...avtarOption
+                        ...avtarOption
                         }
                     />
 
@@ -68,9 +68,17 @@ const Footer = ({ activeRoute = 'home' }) => {
 
 
                 <TouchableOpacity activeOpacity={0.8} onPress={() => navigationHandler(2)}>
-                    <Avatar.Icon icon={activeRoute === "profile" ? "account" : "account-outline"}
+                    <Avatar.Icon
+                        {...avtarOption}
+
+                        icon={
+                            isAuthenticated === false
+                            ? "login"
+                            : activeRoute === "profile"
+                                ? "account"
+                                : "account-outline"}
                         {
-                            ...avtarOption
+                        ...avtarOption
                         }
                     />
 
