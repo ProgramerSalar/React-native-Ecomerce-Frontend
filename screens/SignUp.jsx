@@ -1,11 +1,11 @@
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { colors, defaultStyle, formHeading, formStyles, inputOptions, inputStyling } from "../styles/styles";
 import { Avatar, Button, TextInput } from 'react-native-paper';
 import Footer from '../components/Footer'
 import { defaultImg } from '../styles/styles';
 
-const SignUp = ({ navigation }) => {
+const SignUp = ({ navigation, route }) => {
 
 
   const [avatar, setAvatar] = useState("")
@@ -18,8 +18,8 @@ const SignUp = ({ navigation }) => {
   const [pinCode, setPinCode] = useState("")
 
 
-  const disableBtn = 
-  !name || !email || !password || !address || !city || !country || !pinCode
+  const disableBtn =
+    !name || !email || !password || !address || !city || !country || !pinCode
 
 
 
@@ -36,6 +36,19 @@ const SignUp = ({ navigation }) => {
   const loading = false
 
 
+  useEffect(() => {
+    if (route.params?.image) {
+      setAvatar(route.params.image)
+
+      // dispatch update image 
+
+
+    }
+
+
+  }, [route.params])   // only one 
+
+
   return (
 
     <>
@@ -49,24 +62,25 @@ const SignUp = ({ navigation }) => {
         </View>
 
         <ScrollView showsVerticalScrollIndicator={false} style={{
-          padding:20,
-          elevation:10,
-          borderRadius:10,
-          backgroundColor:colors.color3,
-          marginTop:10
+          padding: 20,
+          elevation: 10,
+          borderRadius: 10,
+          backgroundColor: colors.color3,
+          marginTop: 10
         }}>
 
           <View style={{ minHeight: 900 }}>
 
             <Avatar.Image style={{
-              alignSelf:'center',
-              backgroundColor:colors.color1
+              alignSelf: 'center',
+              backgroundColor: colors.color1
             }}
-            size={80}
-            source={{uri: avatar ? avatar : defaultImg,
+              size={80}
+              source={{
+                uri: avatar ? avatar : defaultImg,
 
-            }} />
-            <TouchableOpacity onPress={() => navigation.navigate('camera')}>
+              }} />
+            <TouchableOpacity onPress={() => navigation.navigate('CameraComponent')}>
               <Button textColor={colors.color1}>Change Photo</Button>
             </TouchableOpacity>
 
@@ -75,7 +89,7 @@ const SignUp = ({ navigation }) => {
               placeholder='Enter Name'
               value={name}
               onChangeText={setName}
-              
+
             />
             <TextInput {...inputOptions}
               placeholder='Enter Email'
@@ -93,27 +107,27 @@ const SignUp = ({ navigation }) => {
               placeholder='Enter Address'
               value={address}
               onChangeText={setAddress}
-              
+
             />
             <TextInput {...inputOptions}
               placeholder='City'
               value={city}
               onChangeText={setCity}
-              
+
             />
             <TextInput {...inputOptions}
               placeholder='Country'
               value={country}
               onChangeText={setCountry}
-            
+
             />
             <TextInput {...inputOptions}
               placeholder='PinCode'
               value={pinCode}
               onChangeText={setPinCode}
-              
+
             />
-            
+
 
 
 

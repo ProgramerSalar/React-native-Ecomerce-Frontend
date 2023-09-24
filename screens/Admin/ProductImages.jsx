@@ -1,5 +1,5 @@
 import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { colors, defaultStyle, formHeading } from "../../styles/styles";
 import Header from "../../components/Header";
 import ImageCard from "../../components/ImageCard";
@@ -20,6 +20,16 @@ const ProductImages = ({ route, navigation }) => {
         console.log("Image Id", images)
         console.log("Product Id", productId)
     }
+
+    useEffect(() => {
+        if (route.params?.image) {
+            setImage(route.params.image)
+            setImageChanged(true)   // set image are changed 
+
+        }
+
+
+    }, [route.params])   // only one 
 
     return (
         <View style={{
@@ -89,7 +99,7 @@ const ProductImages = ({ route, navigation }) => {
                 }}>
                     <TouchableOpacity
                         activeOpacity={0.9}
-                        onPress={() => navigation.navigate('camera', { updateproduct: true })}>
+                        onPress={() => navigation.navigate('CameraComponent', { updateproduct: true })}>
                         <Avatar.Icon
                             icon={'camera'}
                             size={30}

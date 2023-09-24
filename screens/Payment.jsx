@@ -10,7 +10,7 @@ const Payment = ({ navigation, route }) => {
 
     const [paymentMethod, setPaymentMethod] = useState("COD")
 
-    const isAuthenticated = false
+    const isAuthenticated = true
 
     const redirectToLogin = () => {
         navigation.navigate("login")

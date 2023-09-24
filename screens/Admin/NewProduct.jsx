@@ -5,13 +5,14 @@ import Header from '../../components/Header'
 import { Avatar, Button, TextInput } from 'react-native-paper'
 import Loader from '../../components/Loader'
 import SelectComponent from '../../components/SelectComponent'
+import { useEffect } from 'react'
 
 const NewProduct = ({ route, navigation }) => {
 
     // console.log(route.params)
     const [visible, setVisible] = useState(false);
 
-   const [image, setImage] = useState("")
+    const [image, setImage] = useState("")
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
@@ -19,18 +20,24 @@ const NewProduct = ({ route, navigation }) => {
     const [category, setCategory] = useState("");
     const [categoryID, setCategoryID] = useState("");
     const [categories, setCategories] = useState([
-        {"_id":"1", category:"laptop"},
-        {"_id":"2", category:"laptop"},
-        {"_id":"3", category:"laptop"},
-        {"_id":"4", category:"laptop"},
-        {"_id":"5", category:"laptop"},
+        { "_id": "1", category: "laptop" },
+        { "_id": "2", category: "laptop" },
+        { "_id": "3", category: "laptop" },
+        { "_id": "4", category: "laptop" },
+        { "_id": "5", category: "laptop" },
     ]);
 
     const loading = false
-    
-    const submitHandler = () => { 
-        console.log(name,description,price,stock,categoryID)
+
+    const submitHandler = () => {
+        console.log(name, description, price, stock, categoryID)
     }
+
+    useEffect(() => {
+        if (route.params?.image)   // if image condition is true 
+            setImage(route.params.image)   // then set the image 
+
+    }, [route.params])   // only one 
 
 
     return (
@@ -67,47 +74,47 @@ const NewProduct = ({ route, navigation }) => {
                             }}
                         >
 
-<View style={{
-    width:80,
-    height:80,
-    alignSelf:'center',
-    marginBottom:20,
+                            <View style={{
+                                width: 80,
+                                height: 80,
+                                alignSelf: 'center',
+                                marginBottom: 20,
 
 
-}}>
-    <Avatar.Image
-    size={80}
-    style={{
-        backgroundColor:colors.color1
-    }}
-    source={{
-        uri : image ? image : null 
-    }}
-    />
+                            }}>
+                                <Avatar.Image
+                                    size={80}
+                                    style={{
+                                        backgroundColor: colors.color1
+                                    }}
+                                    source={{
+                                        uri: image ? image : null
+                                    }}
+                                />
 
-    <TouchableOpacity
-    onPress={() => navigation.navigate('camera', {newProduct:true})}
-    >
+                                <TouchableOpacity
+                                    onPress={() => navigation.navigate('CameraComponent', { newProduct: true })}
+                                >
 
-        <Avatar.Icon
-        icon={'camera'}
-        size={30}
-        color={colors.color3}
-        style={{
-            backgroundColor:colors.color2,
-            position:'absolute',
-            bottom:0,
-            right:-5
-        }}
-        />
-
-
-    </TouchableOpacity>
-
-</View>
+                                    <Avatar.Icon
+                                        icon={'camera'}
+                                        size={30}
+                                        color={colors.color3}
+                                        style={{
+                                            backgroundColor: colors.color2,
+                                            position: 'absolute',
+                                            bottom: 0,
+                                            right: -5
+                                        }}
+                                    />
 
 
-                           
+                                </TouchableOpacity>
+
+                            </View>
+
+
+
 
                             <TextInput
                                 {...inputOptions}
@@ -160,7 +167,7 @@ const NewProduct = ({ route, navigation }) => {
                                 loading={loading}
                                 disabled={loading}
                             >
-                                Create 
+                                Create
                             </Button>
                         </View>
                     </ScrollView>
@@ -171,14 +178,14 @@ const NewProduct = ({ route, navigation }) => {
             </View>
 
             <SelectComponent
-            categories={categories}
-            setCategoryID={setCategoryID}
-            setCategory={setCategory}
-            visible={visible}
-            setVisible={setVisible}
+                categories={categories}
+                setCategoryID={setCategoryID}
+                setCategory={setCategory}
+                visible={visible}
+                setVisible={setVisible}
             />
 
-          
+
 
         </>
 
