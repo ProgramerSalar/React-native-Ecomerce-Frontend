@@ -20,13 +20,14 @@ const categories = [
 ]
 
 
-const products = [
+export const products = [
   
   {
   price: 435,
   name: "shoes",
   stock: 34,
   _id: "1",
+  category:"rohan",
   images: [
     {
       url: "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?cs=srgb&dl=pexels-math-90946.jpg&fm=jpg",
@@ -40,6 +41,7 @@ const products = [
   name: "socks",
   stock: 34,
   _id: "2",
+  category:"rohanr",
   images: [
     {
       url: "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?cs=srgb&dl=pexels-math-90946.jpg&fm=jpg",
