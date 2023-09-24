@@ -7,69 +7,71 @@ import { Headline } from 'react-native-paper';
 import OrderItem from '../components/OrderItem';
 
 
+export const orders = [
+
+    {
+        _id: 'fdfef1',
+        shippingInfo: {
+            address: '23 east',
+            city: 'new yark',
+            country: 'india',
+            pinCode: 343,
+
+        },
+        createdAt: '12-01-2000',
+        orderStatus: 'Processing',
+        paymentMethod: 'online',
+        totalAmount: 1200,
+    },
+    {
+        _id: '2',
+        shippingInfo: {
+            address: '23 east',
+            city: 'new yark',
+            country: 'india',
+            pinCode: 343,
+
+        },
+        createdAt: '12-01-2000',
+        orderStatus: 'Processing',
+        paymentMethod: 'online',
+        totalAmount: 1200,
+    },
+    {
+        _id: 'fdfef1dd',
+        shippingInfo: {
+            address: '23 east',
+            city: 'new yark',
+            country: 'india',
+            pinCode: 343,
+
+        },
+        createdAt: '12-01-2000',
+        orderStatus: 'Processing',
+        paymentMethod: 'online',
+        totalAmount: 1200,
+    },
+    {
+        _id: '2dddd',
+        shippingInfo: {
+            address: '23 east',
+            city: 'new yark',
+            country: 'india',
+            pinCode: 343,
+
+        },
+        createdAt: '12-01-2000',
+        orderStatus: 'Processing',
+        paymentMethod: 'online',
+        totalAmount: 1200,
+    },
+
+]
+
 const Orders = () => {
 
     const loading = false
-    const orders = [
 
-        {
-            _id: 'fdfef1',
-            shippingInfo: {
-                address: '23 east',
-                city: 'new yark',
-                country: 'india',
-                pinCode: 343,
-
-            },
-            createdAt: '12-01-2000',
-            orderStatus: 'Processing',
-            paymentMethod: 'online',
-            totalAmount: 1200,
-        },
-        {
-            _id: '2',
-            shippingInfo: {
-                address: '23 east',
-                city: 'new yark',
-                country: 'india',
-                pinCode: 343,
-
-            },
-            createdAt: '12-01-2000',
-            orderStatus: 'Processing',
-            paymentMethod: 'online',
-            totalAmount: 1200,
-        },
-        {
-            _id: 'fdfef1dd',
-            shippingInfo: {
-                address: '23 east',
-                city: 'new yark',
-                country: 'india',
-                pinCode: 343,
-
-            },
-            createdAt: '12-01-2000',
-            orderStatus: 'Processing',
-            paymentMethod: 'online',
-            totalAmount: 1200,
-        },
-        {
-            _id: '2dddd',
-            shippingInfo: {
-                address: '23 east',
-                city: 'new yark',
-                country: 'india',
-                pinCode: 343,
-
-            },
-            createdAt: '12-01-2000',
-            orderStatus: 'Processing',
-            paymentMethod: 'online',
-            totalAmount: 1200,
-        },
-
-    ]
 
 
     return (
