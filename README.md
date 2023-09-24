@@ -40,5 +40,6 @@ yarn add react-native-svg install peer dependencies
 Go To this link: https://www.npmjs.com/package/react-native-chart-kit
 
 
-https://camo.githubusercontent.com/5336ffce886e109145750da4d734363b2330e020871b1c564315149e2ad2d9cb/68747470733a2f2f692e696d6775722e636f6d2f496470345749582e6a7067
+
+[Image of Char-kit](https://camo.githubusercontent.com/5336ffce886e109145750da4d734363b2330e020871b1c564315149e2ad2d9cb/68747470733a2f2f692e696d6775722e636f6d2f496470345749582e6a7067)
 
