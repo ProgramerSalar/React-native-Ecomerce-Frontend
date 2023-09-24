@@ -41,7 +41,7 @@ Go To this link: https://www.npmjs.com/package/react-native-chart-kit
 
 
 
-[Image of Char-kit](G:\image\image\68747470733a2f2f692e696d6775722e636f6d2f496470345749582e6a7067.jpeg)
+
 
 
 - i will download the two package using the camera:
