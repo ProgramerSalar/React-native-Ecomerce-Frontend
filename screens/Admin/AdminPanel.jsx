@@ -17,9 +17,23 @@ const AdminPanel = ({ navigation }) => {
 
     const loading = false;
 
-    const navigationHandler = () => {
+    const navigationHandler = (text) => {
+        switch (text) {
+            case "Category":
+                navigation.navigate("categories");
+                break;
+            case "All Orders":
+                navigation.navigate("adminorders");
+                break;
+            case "Product":
+                navigation.navigate("newproduct");
+                break;
 
-    }
+            default:
+                navigation.navigate("adminorders");
+                break;
+        }
+    };
 
     const deleteProductHandler = (id) => {
 

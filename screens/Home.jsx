@@ -50,6 +50,62 @@ export const products = [
   ]
 
 },
+  {
+  price: 435,
+  name: "shoes",
+  stock: 34,
+  _id: "21",
+  category:"rohan",
+  images: [
+    {
+      url: "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?cs=srgb&dl=pexels-math-90946.jpg&fm=jpg",
+
+    }
+  ]
+
+},
+  {
+  price: 435,
+  name: "socks",
+  stock: 34,
+  _id: "22",
+  category:"rohanr",
+  images: [
+    {
+      url: "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?cs=srgb&dl=pexels-math-90946.jpg&fm=jpg",
+
+    }
+  ]
+
+},
+  {
+  price: 435,
+  name: "shoes",
+  stock: 324,
+  _id: "1",
+  category:"rohan",
+  images: [
+    {
+      url: "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?cs=srgb&dl=pexels-math-90946.jpg&fm=jpg",
+
+    }
+  ]
+
+},
+  {
+  price: 435,
+  name: "socks",
+  stock: 324,
+  _id: "2",
+  category:"rohanr",
+  images: [
+    {
+      url: "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?cs=srgb&dl=pexels-math-90946.jpg&fm=jpg",
+
+    }
+  ]
+
+},
 
 
 ]
