@@ -14,5 +14,6 @@
     Then run this command: npm run dev 
 
 
-
+- install the validator package, this package used in valid for the user, 
+if you know more go to thie package: https://www.npmjs.com/package/validator
     
