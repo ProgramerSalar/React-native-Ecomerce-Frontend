@@ -23,5 +23,18 @@ if you know more go to thie package: https://www.npmjs.com/package/validator
 know more: https://www.npmjs.com/package/bcrypt
 
 
--- we are install the jsonwebtoken, because we are used to token in singn and register page 
--- And install cookie from this package: https://www.npmjs.com/package/cookie-parser
+- we are install the jsonwebtoken, because we are used to token in singn and register page 
+- And install cookie from this package: https://www.npmjs.com/package/cookie-parser
+
+
+- i will install cloudanary from there : https://www.npmjs.com/package/cloudinary
+Cloudinary is a powerful media API for websites and mobile apps alike, Cloudinary enables developers to efficiently manage, transform, optimize, and deliver images and videos through multiple CDNs. Ultimately, viewers enjoy responsive and personalized visual-media experiences
+
+- i will install multer from there : https://www.npmjs.com/package/multer
+Multer is a node.js middleware for handling multipart/form-data, which is primarily used for uploading files. It is written on top of busboy for maximum efficiency.
+
+NOTE: Multer will not process any form which is not multipart (multipart/form-data).
+
+
+- i will install this package: https://www.npmjs.com/package/datauri
+The data URI scheme is a uniform resource identifier (URI) scheme that provides a way to include data in-line in web pages as if they were external resources.

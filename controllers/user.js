@@ -1,8 +1,9 @@
 import { asyncError } from "../middlewares/error.js";
 import { User } from "../models/user.js";
 import ErrorHandler from "../utils/error.js";
-import { sendToken, cookieOptions } from "../utils/features.js";
+import { sendToken, cookieOptions, getDataUri } from "../utils/features.js";
 // import cookie from 'cookie-parser'
+import cloudanary from "cloudinary";
 
 export const login = asyncError(async (req, res, next) => {
   const { email, password } = req.body;
@@ -35,9 +36,26 @@ export const signup = asyncError(async (req, res, next) => {
   let user = await User.findOne({ email });
   if (user) return next(new ErrorHandler("User Already Exists", 400));
 
+  // req.file
+  // console.log(req.file)
+  // const file = getDataUri(req.file);
+  // console.log(file)
   // Add Cloudanary
+  // const myCloud = await cloudanary.v2.uploader.upload(file.content)
+  // console.log(myCloud.secure_url)
+
+  let avatar = undefined;
+  if (req.file) {
+    const file = getDataUri(req.file);
+    const myCloud = await cloudanary.v2.uploader.upload(file.content);
+    avatar = {
+      public_id: myCloud.public_id,
+      url: myCloud.secure_url,
+    };
+  }
 
   user = await User.create({
+    avatar,
     name,
     email,
     password,
@@ -103,7 +121,7 @@ export const changePassword = asyncError(async (req, res, next) => {
     );
 
   const isMatched = await user.comparePassword(oldPassword);
-  if (!isMatched) return next(new ErrorHandler("Incorrect Old Password",400));
+  if (!isMatched) return next(new ErrorHandler("Incorrect Old Password", 400));
 
   user.password = newPassword;
   await user.save();
@@ -111,5 +129,14 @@ export const changePassword = asyncError(async (req, res, next) => {
   res.status(200).json({
     success: true,
     message: "Password Changed SuccessFully",
+  });
+});
+
+export const updatePic = asyncError(async (req, res, next) => {
+  const user = await User.findById(req.user._id); // find the user
+
+  res.status(200).json({
+    success: true,
+    user,
   });
 });

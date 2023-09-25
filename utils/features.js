@@ -1,3 +1,20 @@
+import DatauriParser  from "datauri/parser.js";
+import path from "path"
+
+
+export const getDataUri = (file) => {
+
+  const parser = new DatauriParser()
+  const extName = path.extname(file.originalname).toString()   
+  return parser.format(extName, file.buffer)
+
+
+  
+}
+
+
+
+
 export const sendToken = (user, res, message, statusCode) => {
   const token = user.generateToken();
 
@@ -19,3 +36,6 @@ export const cookieOptions = {
   httpOnly: process.env.NODE_ENV === "Development" ? false : true,
   sameSite: process.env.NODE_ENV === "Development" ? false : "none",
 };
+
+
+
