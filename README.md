@@ -21,3 +21,7 @@ if you know more go to thie package: https://www.npmjs.com/package/validator
 
 - we should install the bcrypt package, this package are bcrypt your password
 know more: https://www.npmjs.com/package/bcrypt
+
+
+-- we are install the jsonwebtoken, because we are used to token in singn and register page 
+-- And install cookie from this package: https://www.npmjs.com/package/cookie-parser

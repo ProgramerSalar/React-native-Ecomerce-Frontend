@@ -1,6 +1,6 @@
 import express from "express";
 import { config } from "dotenv";
-
+import cookieParser from 'cookie-parser'
 
 config({
   path: "./data/config.env",
@@ -15,6 +15,7 @@ export const app = express()
 
 // Using Middleware 
 app.use(express.json())
+app.use(cookieParser())
 
 
 
