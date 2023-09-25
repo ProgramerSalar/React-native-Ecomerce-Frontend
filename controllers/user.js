@@ -135,8 +135,18 @@ export const changePassword = asyncError(async (req, res, next) => {
 export const updatePic = asyncError(async (req, res, next) => {
   const user = await User.findById(req.user._id); // find the user
 
+  const file = getDataUri(req.file);  // buffer data in file 
+  await cloudanary.v2.uploader.destroy(user.avatar.public_id)  // deteting the data in cloudanary
+
+  const myCloud = await cloudanary.v2.uploader.upload(file.content);  // upload new image in cloudanary
+  user.avatar = {       // chanage the user image 
+    public_id: myCloud.public_id,
+    url: myCloud.secure_url,
+  };
+  await user.save()     // save 
+
   res.status(200).json({
     success: true,
-    user,
+    message:"Avatar updated successfully",
   });
 });
