@@ -5,7 +5,7 @@ import { asyncError } from "./error.js";
 
 export const isAuthenticated = asyncError(async (req, res, next) => {
   // const token = req.cookie.token
-//   console.log(req.cookies.token);
+  //   console.log(req.cookies.token);
 
   const { token } = req.cookies; // store the cookies in token variable
 

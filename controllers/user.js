@@ -25,16 +25,6 @@ export const login = asyncError(async (req, res, next) => {
 
   // json token
   sendToken(user, res, `Welcome Back, ${user.name}`, 200);
-  // const token = user.generateToken()
-
-  // res.status(200).cookie("token",token,{
-  //   expires: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000),
-  // }).json({
-  //   sucess:true,
-  //   message:`Welcom Back, ${user.name}`,
-    
-  // })
-  
 });
 
 export const signup = asyncError(async (req, res, next) => {
@@ -58,10 +48,11 @@ export const signup = asyncError(async (req, res, next) => {
   sendToken(user, res, `Registered  Sucessfully`, 201);
 });
 
+export const getMyProfile = asyncError(async (req, res, next) => {
+  const user = await User.findById(req.user._id);
 
-
-
-export const getMyProfile = asyncError(async (req,res,next) => {
-  res.send('working profile')
-
-})
+  res.status(200).json({
+    success: true,
+    user,
+  });
+});
