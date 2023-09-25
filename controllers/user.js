@@ -192,11 +192,31 @@ export const forgetpassword = asyncError(async (req, res, next) => {
   });
 });
 
+
+
 export const resetpassword = asyncError(async (req, res, next) => {
-  const user = await User.findById(req.user._id); // find the user
+  const { otp, password } = req.body;
+  const user = await User.findOne({
+    otp,
+    otp_expire: {
+      $gt: Date.now(),
+    },
+  });
+
+  if (!user)
+    return next(new ErrorHandler("Incorrect OTP or has been expired", 400));
+
+  if (!password)
+    return next(new ErrorHandler("Please Enter New Password", 400));
+
+  user.password = password;
+  user.otp = undefined;
+  user.otp_expire = undefined;
+
+  await user.save();
 
   res.status(200).json({
     success: true,
-    user,
+    message: "Password Changed Successfully, YOu can login now",
   });
 });
