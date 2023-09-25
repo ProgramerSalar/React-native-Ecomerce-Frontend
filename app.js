@@ -3,13 +3,13 @@ import { config } from "dotenv";
 
 
 config({
-    path: "./data/config.env",
-  });
-  
+  path: "./data/config.env",
+});
 
 
 
-export const app = express ()
+
+export const app = express()
 
 
 
@@ -18,12 +18,20 @@ app.use(express.json())
 
 
 
-app.get('/', (req,res,next) => {
-    res.send('working')
+app.get('/', (req, res, next) => {
+  res.send('working')
 })
 
 
 // import Routes here 
-import user   from './routes/user.js'
+import user from './routes/user.js'
+
 
 app.use('/api/v1/user', user)
+
+
+
+
+// using Error Middleware 
+import { errorMiddleware } from "./middlewares/error.js";
+app.use(errorMiddleware)

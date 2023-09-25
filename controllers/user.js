@@ -1,4 +1,5 @@
 import { User } from "../models/user.js"
+import ErrorHandler from "../utils/error.js"
 
 
 
@@ -22,14 +23,14 @@ export const login = async (req, res, next) => {
     const isMatched = await user.comparePassword(password)
 
     if (!isMatched) {
-        return res
-            .status(400)
-            .json({ sucess: false, message: "Incorrect  Password" })
+        return next(new ErrorHandler("Incorrect  Password",400))
     }
     res.status(200).json({
         sucess:true,
         message:`Welcome back, ${user.name}`
     })
+
+    
 
 
 
