@@ -2,7 +2,8 @@
 
 - install the project express, mongoose, dotenv, mongodb
 
-- install nodemon [
+- install nodemon 
+[
     how to start the nodemon: 
     "dev":"Set NODE_ENV=devlopment&& nodemon server.js",
     "start":"Set NODE_ENV=devlopment&& node server.js",
