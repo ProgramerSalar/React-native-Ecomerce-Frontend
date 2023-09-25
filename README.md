@@ -17,3 +17,7 @@
 - install the validator package, this package used in valid for the user, 
 if you know more go to thie package: https://www.npmjs.com/package/validator
     
+
+
+- we should install the bcrypt package, this package are bcrypt your password
+know more: https://www.npmjs.com/package/bcrypt
