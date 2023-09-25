@@ -11,6 +11,13 @@ config({
 
 export const app = express ()
 
+
+
+// Using Middleware 
+app.use(express.json())
+
+
+
 app.get('/', (req,res,next) => {
     res.send('working')
 })

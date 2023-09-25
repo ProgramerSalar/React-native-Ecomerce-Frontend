@@ -1,12 +1,13 @@
 import express from "express";
-import { getMyProfile } from "../controllers/user.js";
-
+import { login } from "../controllers/user.js";
+import { signup } from "../controllers/user.js";
 
 const router = express.Router()
 
 
-// http://localhost:5000/api/v1/user/me
-router.route('/me').get(getMyProfile)
+
+router.post('/login',login)
+router.post('/signup', signup)
 
 
 
