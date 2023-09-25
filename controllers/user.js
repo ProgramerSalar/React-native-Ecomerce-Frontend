@@ -1,10 +1,11 @@
 import { asyncError } from "../middlewares/error.js";
 import { User } from "../models/user.js";
 import ErrorHandler from "../utils/error.js";
+import { sendToken } from "../utils/features.js";
+// import cookie from 'cookie-parser'
 
 export const login = asyncError(async (req, res, next) => {
   const { email, password } = req.body;
-  
 
   const user = await User.findOne({ email }).select("+password");
 
@@ -19,22 +20,32 @@ export const login = asyncError(async (req, res, next) => {
   const isMatched = await user.comparePassword(password);
 
   if (!isMatched) {
-    return next(new ErrorHandler("Incorrect  Password", 400));
+    return next(new ErrorHandler("Incorrect  Password", 200));
   }
-  res.status(200).json({
-    sucess: true,
-    message: `Welcome back, ${user.name}`,
-  });
+
+  // json token
+  sendToken(user, res, `Welcome Back, ${user.name}`, 200);
+  // const token = user.generateToken()
+
+  // res.status(200).cookie("token",token,{
+  //   expires: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000),
+  // }).json({
+  //   sucess:true,
+  //   message:`Welcom Back, ${user.name}`,
+    
+  // })
+  
 });
 
 export const signup = asyncError(async (req, res, next) => {
   const { name, email, password, address, city, country, pinCode } = req.body;
-    
-  
-  // Add Cloudanary
-  
 
-  await User.create({
+  let user = await User.findOne({ email });
+  if (user) return next(new ErrorHandler("User Already Exists", 400));
+
+  // Add Cloudanary
+
+  user = await User.create({
     name,
     email,
     password,
@@ -44,8 +55,5 @@ export const signup = asyncError(async (req, res, next) => {
     pinCode,
   });
 
-  res.status(201).json({
-    sucess: true,
-    message: "Register Successfully",
-  });
+  sendToken(user, res, `Registered  Sucessfully`, 201);
 });

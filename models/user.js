@@ -1,6 +1,7 @@
-import mongoose from 'mongoose'
-import validator from 'validator';
-import bcrypt from 'bcrypt'
+import mongoose from "mongoose";
+import validator from "validator";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 const schema = new mongoose.Schema({
   name: {
@@ -51,23 +52,22 @@ const schema = new mongoose.Schema({
   otp_expire: Date,
 });
 
-
-// Hash password function 
+// Hash password function
 schema.pre("save", async function () {
+  console.log(this.password);
+  this.password = await bcrypt.hash(this.password, 10); // hash this password in 10 character
+});
 
-  console.log(this.password)
-  this.password = await bcrypt.hash(this.password, 10)  // hash this password in 10 character 
-  
-
-
-})
-
-// compare password functions 
+// compare password functions
 schema.methods.comparePassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
+// generate token
+schema.methods.generateToken = function () {
+  return jwt.sign({ _id: this._id }, process.env.JWT_SECRET, {
+    expiresIn: "15d",
+  });
+};
 
-
-
-export const User = mongoose.model("User", schema)
+export const User = mongoose.model("User", schema);
