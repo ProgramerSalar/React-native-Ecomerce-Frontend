@@ -1,7 +1,12 @@
 import { asyncError } from "../middlewares/error.js";
 import { User } from "../models/user.js";
 import ErrorHandler from "../utils/error.js";
-import { sendToken, cookieOptions, getDataUri } from "../utils/features.js";
+import {
+  sendToken,
+  cookieOptions,
+  getDataUri,
+  sendEmail,
+} from "../utils/features.js";
 // import cookie from 'cookie-parser'
 import cloudanary from "cloudinary";
 
@@ -135,18 +140,63 @@ export const changePassword = asyncError(async (req, res, next) => {
 export const updatePic = asyncError(async (req, res, next) => {
   const user = await User.findById(req.user._id); // find the user
 
-  const file = getDataUri(req.file);  // buffer data in file 
-  await cloudanary.v2.uploader.destroy(user.avatar.public_id)  // deteting the data in cloudanary
+  const file = getDataUri(req.file); // buffer data in file
+  await cloudanary.v2.uploader.destroy(user.avatar.public_id); // deteting the data in cloudanary
 
-  const myCloud = await cloudanary.v2.uploader.upload(file.content);  // upload new image in cloudanary
-  user.avatar = {       // chanage the user image 
+  const myCloud = await cloudanary.v2.uploader.upload(file.content); // upload new image in cloudanary
+  user.avatar = {
+    // chanage the user image
     public_id: myCloud.public_id,
     url: myCloud.secure_url,
   };
-  await user.save()     // save 
+  await user.save(); // save
 
   res.status(200).json({
     success: true,
-    message:"Avatar updated successfully",
+    message: "Avatar updated successfully",
+  });
+});
+
+export const forgetpassword = asyncError(async (req, res, next) => {
+  const { email } = req.body;
+  const user = await User.findOne({ email });
+
+  if (!user) return next(new ErrorHandler("Incorrect Email", 535));
+
+  // max, min 2000, 10000
+  // Math.random()*(max-min) + min
+
+  const randomNumber = Math.random() * (999999 - 100000) + 100000;
+  const otp = Math.floor(randomNumber);
+  const otp_expire = 15 * 60 * 1000;
+
+  user.otp = otp;
+  user.otp_expire = new Date(Date.now() + otp_expire);
+  await user.save();
+  console.log(otp);
+
+  // send Email
+  const message = `You otp for Reseting password is ${otp}. \n please Ignore if you have not requeseted this.`;
+  try {
+    await sendEmail("OTP for Reseting Password", user.email, message);
+  } catch (error) {
+    user.otp = null;
+    user.otp_expire = null;
+    await user.save();
+    return next(error);
+  }
+
+  res.status(200).json({
+    success: true,
+    message: `Email send to ${user.email}`,
+  });
+});
+
+export const resetpassword = asyncError(async (req, res, next) => {
+  const user = await User.findById(req.user._id); // find the user
+
+  res.status(200).json({
+    success: true,
+    user,
   });
 });

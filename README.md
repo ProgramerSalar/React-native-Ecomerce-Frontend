@@ -38,3 +38,8 @@ NOTE: Multer will not process any form which is not multipart (multipart/form-da
 
 - i will install this package: https://www.npmjs.com/package/datauri
 The data URI scheme is a uniform resource identifier (URI) scheme that provides a way to include data in-line in web pages as if they were external resources.
+
+
+
+- i will download this package for  Send emails from Node.js – easy as cake
+from this link: https://www.npmjs.com/package/nodemailer
