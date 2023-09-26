@@ -5,6 +5,17 @@ import { getDataUri } from "../utils/features.js";
 import cloudinary from "cloudinary";
 import { Category } from "../models/category.js";
 
+export const getAdminProducts = asyncError(async ({ req, res, next }) => {
+  // search and category query;
+  const products = await Product.find({});
+
+  res.status(200).json({
+    success: true,
+    products,
+  });
+});
+
+
 export const getAllProducts = asyncError(async ({ req, res, next }) => {
   // search and category query;
   const products = await Product.find({});
