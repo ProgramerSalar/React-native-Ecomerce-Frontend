@@ -51,3 +51,5 @@ The Stripe Node library provides convenient access to the Stripe API from applic
 For collecting customer and payment information in the browser, use Stripe.js.
 
 
+- i will install this package: https://www.npmjs.com/package/cors
+CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.

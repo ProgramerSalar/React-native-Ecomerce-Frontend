@@ -1,6 +1,8 @@
 import express from "express";
 import { config } from "dotenv";
 import cookieParser from 'cookie-parser'
+import cors from 'cors'
+
 
 config({
   path: "./data/config.env",
@@ -16,6 +18,11 @@ export const app = express()
 // Using Middleware 
 app.use(express.json())
 app.use(cookieParser())
+app.use(cors({
+  credentials:true,
+  methods:["GET","POST","PUT","DELETE"],
+  origin:[process.env.FRONTENT_URL_1, process.env.FRONTENT_URL_2],
+}))
 
 
 
