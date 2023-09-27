@@ -43,3 +43,11 @@ The data URI scheme is a uniform resource identifier (URI) scheme that provides 
 
 - i will download this package for  Send emails from Node.js – easy as cake
 from this link: https://www.npmjs.com/package/nodemailer
+
+
+
+- i will download the stripe for payment system using this directory:https://www.npmjs.com/package/stripe
+The Stripe Node library provides convenient access to the Stripe API from applications written in server-side JavaScript.
+For collecting customer and payment information in the browser, use Stripe.js.
+
+

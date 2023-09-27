@@ -5,6 +5,7 @@ import {
   getMYOrders,
   getOrderDetails,
   processOrder,
+  processPayment,
 } from "../controllers/order.js";
 import { isAdmin, isAuthenticated } from "../middlewares/auth.js";
 
@@ -18,5 +19,8 @@ router
   .put(isAuthenticated, isAdmin, processOrder);
 
 router.get("/admin", isAuthenticated, isAdmin, getAdminOrders)
+
+// payment 
+router.post("/payment", isAuthenticated, processPayment)
 
 export default router;
