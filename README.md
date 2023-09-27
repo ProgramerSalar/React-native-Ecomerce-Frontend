@@ -47,3 +47,14 @@ Go To this link: https://www.npmjs.com/package/react-native-chart-kit
 - i will download the two package using the camera:
  1. https://www.npmjs.com/package/expo-camera
  2. https://www.npmjs.com/package/expo-image-picker
+
+
+
+
+- After the Deployement, i am install the redux toolkit using this repository: https://redux-toolkit.js.org/introduction/getting-started
+from this thinks are install: npm install @reduxjs/toolkit, react-redux, axios
+
+- And install the mime from this repostory: https://www.npmjs.com/package/mime
+A comprehensive, compact MIME type module.
+
+
