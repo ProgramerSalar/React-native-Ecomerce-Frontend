@@ -9,4 +9,4 @@ export const store = configureStore({
 })
 
 
-export const server = "https://programersalar-server.onrender.com"
+export const server = "https://programersalar-server.onrender.com/api/v1"

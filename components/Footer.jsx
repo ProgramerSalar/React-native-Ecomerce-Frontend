@@ -8,7 +8,7 @@ const Footer = ({ activeRoute = 'home' }) => {
 
     const navigate = useNavigation()
     const loading = false // this show the database is connected or not 
-    const isAuthenticated = true;   // authenticated are false go to the login page 
+    const isAuthenticated = false;   // authenticated are false go to the login page 
 
 
 

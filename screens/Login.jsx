@@ -3,6 +3,11 @@ import React, { useState } from 'react'
 import { colors, defaultStyle, formHeading, formStyles, inputOptions, inputStyling } from "../styles/styles";
 import { Button, TextInput } from 'react-native-paper';
 import Footer from '../components/Footer'
+import {useDispatch, useSelector} from "react-redux"
+import {login} from "../redux/actions/userAction"
+
+
+
 
 
 const Login = ({ navigation }) => {
@@ -10,18 +15,22 @@ const Login = ({ navigation }) => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const dispatch = useDispatch()
+    const {loading,message,error, isAuuthenticated} = useSelector((state)=> state.user)
 
-
+    console.log(message, error, isAuuthenticated )
 
 
     const submitHandler = () => {
         alert("Yaah")
+        dispatch(login(email,password))
 
 
     }
 
 
-    const loading = false
+    // const loading = false
+    
 
 
     return (
