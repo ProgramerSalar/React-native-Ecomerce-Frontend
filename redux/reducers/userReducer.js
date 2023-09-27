@@ -20,6 +20,12 @@ export const userReducer = createReducer({}, (builder)=> {
         state.isAuuthenticated=false;
         state.error = action.payload
     });
+    builder.addCase("clearError", (state) => {
+        state.error = null;
+    });
+    builder.addCase("clearMessage", (state) => {
+        state.message = null;
+    });
 
     
 })
