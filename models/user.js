@@ -55,7 +55,7 @@ const schema = new mongoose.Schema({
 // Hash password function
 schema.pre("save", async function (next) {
   if(!this.isModified("password")) return next()
-  console.log(this.password);
+  // console.log(this.password);
   this.password = await bcrypt.hash(this.password, 10); // hash this password in 10 character
 });
 
@@ -66,7 +66,7 @@ schema.methods.comparePassword = async function (enteredPassword) {
 
 // generate token
 schema.methods.generateToken = function () {
-  return jwt.sign({ _id: this._id }, process.env.JWT_SECRET, {
+  return jwt.sign({_id:this._id }, process.env.JWT_SECRET, {
     expiresIn: "15d",
   });
 };
