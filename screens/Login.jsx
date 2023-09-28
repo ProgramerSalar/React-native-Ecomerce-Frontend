@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from "react-redux"
 import {login} from "../redux/actions/userAction"
 import { useEffect } from 'react';
 import Toast from 'react-native-toast-message';
+import { useMessageAndErrorUser } from '../utils/hooks';
 
 
 
@@ -14,40 +15,22 @@ import Toast from 'react-native-toast-message';
 
 
 const Login = ({ navigation }) => {
-
-
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+
+
+
     const dispatch = useDispatch()
-    const {loading,message,error, isAuuthenticated} = useSelector((state)=> state.user)
+    const loading = useMessageAndErrorUser(navigation,dispatch,"profile")
+
+
+    
+    
 
     // console.log(message, error, isAuuthenticated )
     // console.log(isAuuthenticated)
 
-    useEffect(() => {
-
-        if(error){
-            Toast.show({
-                type:"error",
-                text1:error
-            })
-            dispatch({
-                type:"clearError",
-            })
-        }
-
-        if(message){
-            navigation.navigate("profile")
-            Toast.show({
-                type:"success",
-                text1:message
-            })
-            dispatch({
-                type:"clearMessage",
-            })
-        }
-
-    },[error,message,dispatch])
+    
 
 
     const submitHandler = () => {
