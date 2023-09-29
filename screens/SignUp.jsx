@@ -4,8 +4,18 @@ import { colors, defaultStyle, formHeading, formStyles, inputOptions, inputStyli
 import { Avatar, Button, TextInput } from 'react-native-paper';
 import Footer from '../components/Footer'
 import { defaultImg } from '../styles/styles';
+import mime from "mime"
+import { useDispatch } from 'react-redux';
+import { register } from '../redux/actions/userAction';
+import { useMessageAndErrorUser } from '../utils/hooks';
+
+
+
 
 const SignUp = ({ navigation, route }) => {
+
+
+
 
 
   const [avatar, setAvatar] = useState("")
@@ -17,33 +27,73 @@ const SignUp = ({ navigation, route }) => {
   const [country, setCountry] = useState("")
   const [pinCode, setPinCode] = useState("")
 
+  // const dispatch = useDispatch()
+  
 
   const disableBtn =
     !name || !email || !password || !address || !city || !country || !pinCode
 
 
 
-
+  
 
   const submitHandler = () => {
-    // alert("Yaah")
+    const myForm = new FormData()
+    // console.log(myForm)
 
-    // will remove this feature
-    navigation.navigate("verify")
-  }
+    myForm.append("name", name);
+    myForm.append("email", email);
+    myForm.append("password", password);
+    myForm.append("address", address);
+    myForm.append("city", city);
+    myForm.append("country", country);
+    myForm.append("pinCode", pinCode);
+
+    
+
+    if (avatar !== "" ){
+      myForm.append("file",{
+        uri: avatar,
+        type: mime.getType(avatar),
+        name: avatar.split("/").pop()
+      });
+    }
+
+    
+    
+
+  
+
+    
 
 
-  const loading = false
+
+
+    
+    
+    
+
+    dispatch(register(myForm));
+
+    // console.log(myForm)
+
+
+  };
+
+  const dispatch = useDispatch()
+  const loading = useMessageAndErrorUser(navigation,dispatch,"profile")
+
+
+
 
 
   useEffect(() => {
-    if (route.params?.image) {
-      setAvatar(route.params.image)
+    if (route.params?.image) setAvatar(route.params.image)
 
       // dispatch update image 
 
 
-    }
+    
 
 
   }, [route.params])   // only one 

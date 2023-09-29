@@ -1,6 +1,71 @@
 import axios from "axios";
 import { server } from "../store";
 
+export const register = (formData) => async (dispatch) => {
+  try {
+    dispatch({
+      type: "registerRequest",
+    });
+
+    const { data } = await axios.post(`${server}/user/signup`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      withCredentials: true,
+    });
+
+    dispatch({
+      type: "registerSuccess",
+      payload: data.message,
+    });
+  } catch (error) {
+    dispatch({
+      type: "registerFail",
+      payload: error.response.data.message,
+    });
+  }
+};
+
+// export const register =
+//   (name, email, password, address, city, country, pinCode) =>
+//   async (dispatch) => {
+//     try {
+//       dispatch({
+//         type: "registerRequest",
+//       });
+
+//       // Axios here
+//       const { data } = await axios.post(
+//         `${server}/user/signup`,
+//         {
+//           name,
+//           email,
+//           password,
+//           address,
+//           city,
+//           country,
+//           pinCode,
+//         },
+//         {
+//           headers: {
+//             "Content-Type": "multipart/form-data",
+//           },
+//           withCredentials: true,
+//         }
+//       );
+
+//       dispatch({
+//         type: "registerSuccess",
+//         payload: data.message,
+//       });
+//     } catch (error) {
+//       dispatch({
+//         type: "registerFail",
+//         payload: error.response.data.message,
+//       });
+//     }
+//   };
+
 export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({
@@ -18,6 +83,7 @@ export const login = (email, password) => async (dispatch) => {
         headers: {
           "Content-Type": "application/json",
         },
+        withCredentials: true,
       }
     );
 
@@ -39,7 +105,6 @@ export const loadUser = () => async (dispatch) => {
       type: "loadUserRequest",
     });
 
-    
     const { data } = await axios.get(
       `${server}/user/me`,
 
@@ -60,14 +125,12 @@ export const loadUser = () => async (dispatch) => {
   }
 };
 
-
 export const logout = () => async (dispatch) => {
   try {
     dispatch({
       type: "logoutRequest",
     });
 
-    
     const { data } = await axios.get(
       `${server}/user/logout`,
 
