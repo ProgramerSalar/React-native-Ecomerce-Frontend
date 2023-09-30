@@ -7,8 +7,12 @@ import Footer from '../components/Footer'
 import Loader from "../components/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { loadUser, logout } from "../redux/actions/userAction";
-import { useMessageAndErrorUser } from "../utils/hooks";
+import { useMessageAndErrorOther, useMessageAndErrorUser } from "../utils/hooks";
 import { useIsFocused } from "@react-navigation/native";
+import mime from "mime"
+import { updatePic } from "../redux/actions/otherAction";
+
+
 
 
 
@@ -58,7 +62,7 @@ const Profile = ({ navigation, route }) => {
     }
   };
 
-  // const loading = false
+  const loadingPic = useMessageAndErrorOther(dispatch, null, null, loadUser)
 
 
 
@@ -68,6 +72,14 @@ const Profile = ({ navigation, route }) => {
       setAvatar(route.params.image)
 
       // dispatch update image 
+      const myForm = new FormData()
+      myForm.append("file", {
+        uri:route.params.image,
+        type:mime.getType(route.params.image),
+        name:route.params.image.split("/").pop()
+      })
+
+      dispatch(updatePic(myForm))
 
 
     }
@@ -102,9 +114,10 @@ const Profile = ({ navigation, route }) => {
                 />
 
                 <TouchableOpacity
+                disabled={loadingPic}
                   onPress={() => navigation.navigate("CameraComponent", { updateProfile: true })}
                 >
-                  <Button textColor={colors.color1}>Chanage Photo</Button>
+                  <Button disabled={loadingPic} loading={loadingPic} textColor={colors.color1}>Chanage Photo</Button>
                 </TouchableOpacity>
 
                 <Text style={styles.name}>{user?.name}</Text>

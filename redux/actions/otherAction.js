@@ -66,3 +66,40 @@ export const updateProfile =
       });
     }
   };
+
+
+
+export const updatePic =
+  (name, email, address, city, country, pinCode) => async (dispatch) => {
+    try {
+      dispatch({
+        type: "updatePicRequest",
+      });
+      const { data } = await axios.put(
+        `${server}/user/updatepic`,
+        {
+          name,
+          email,
+          address,
+          city,
+          country,
+          pinCode,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
+      dispatch({
+        type: "updatePicSuccess",
+        payload: data.message,
+      });
+    } catch (error) {
+      dispatch({
+        type: "updatePicFail",
+        payload: error.response.data.message,
+      });
+    }
+  };
