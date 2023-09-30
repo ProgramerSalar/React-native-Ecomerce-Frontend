@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import { updatePassword } from '../redux/actions/otherAction';
 import { useMessageAndErrorOther } from "../utils/hooks"
 
-const ChangePassword = () => {
+const ChangePassword = ({navigation}) => {
     
 
 
@@ -29,7 +29,8 @@ const ChangePassword = () => {
     }
 
     const dispatch = useDispatch()
-    const loading = useMessageAndErrorOther(dispatch)
+    // const loading = useMessageAndErrorOther(dispatch)
+    const loading = useMessageAndErrorOther(dispatch,navigation,"profile")
 
 
     return (

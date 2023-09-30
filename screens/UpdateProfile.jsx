@@ -5,35 +5,40 @@ import { Avatar, Button, TextInput } from 'react-native-paper';
 import Footer from '../components/Footer'
 import { defaultImg } from '../styles/styles';
 import Header from '../components/Header';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateProfile } from '../redux/actions/otherAction';
+import { useMessageAndErrorOther } from '../utils/hooks';
 
 const UpdateProfile = ({ navigation }) => {
 
-
+  const { user } = useSelector((state) => state.user)
   
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [address, setAddress] = useState("")
-  const [city, setCity] = useState("")
-  const [country, setCountry] = useState("")
-  const [pinCode, setPinCode] = useState("")
+  const [name, setName] = useState(user?.name)
+  const [email, setEmail] = useState(user?.email)
+  const [address, setAddress] = useState(user?.address)
+  const [city, setCity] = useState(user?.city)
+  const [country, setCountry] = useState(user?.country)
+  const [pinCode, setPinCode] = useState(user?.pinCode.toString())
 
 
-  const disableBtn = 
-  !name || !email ||  !address || !city || !country || !pinCode
+  // const disableBtn = 
+  // !name || !email ||  !address || !city || !country || !pinCode
+
+
+  const dispatch = useDispatch()
+  
 
 
 
 
 
   const submitHandler = () => {
-    // alert("Yaah")
-
-    // will remove this feature
+    dispatch(updateProfile(name, email, address, city, country, pinCode))
     
   }
 
 
-  const loading = false
+  const loading = useMessageAndErrorOther(dispatch,navigation,"profile")
 
 
   return (
@@ -109,7 +114,6 @@ const UpdateProfile = ({ navigation }) => {
 
             <Button
               textColor={colors.color2}
-              disabled={disableBtn}
               onPress={submitHandler}
               style={formStyles.btn}
               loading={loading}

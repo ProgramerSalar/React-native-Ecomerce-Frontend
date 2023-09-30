@@ -6,8 +6,9 @@ import ButtonBox from "../components/ButtonBox";
 import Footer from '../components/Footer'
 import Loader from "../components/Loader";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../redux/actions/userAction";
+import { loadUser, logout } from "../redux/actions/userAction";
 import { useMessageAndErrorUser } from "../utils/hooks";
+import { useIsFocused } from "@react-navigation/native";
 
 
 
@@ -16,12 +17,11 @@ const Profile = ({ navigation, route }) => {
 
   const {user} = useSelector((state) => state.user)
   const [avatar, setAvatar] = useState(user?.avatar?user.avatar.url : defaultImg);
-  // const user = {
-  //   name: "Manish",
-  //   email: "manishkumar@gmail.com",
-  // };
+  
 
   const dispatch = useDispatch()
+  
+  const isFocused =  useIsFocused()
   
 
   const loading = useMessageAndErrorUser(navigation, dispatch, "login")
@@ -61,6 +61,8 @@ const Profile = ({ navigation, route }) => {
   // const loading = false
 
 
+
+
   useEffect(() => {
     if (route.params?.image) {
       setAvatar(route.params.image)
@@ -69,9 +71,10 @@ const Profile = ({ navigation, route }) => {
 
 
     }
+    dispatch(loadUser)
 
 
-  }, [route.params])   // only one 
+  }, [route.params, dispatch, isFocused])   // only one 
 
 
 
