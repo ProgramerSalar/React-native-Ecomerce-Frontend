@@ -1,12 +1,15 @@
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
-import React, { useState } from 'react'
+import React, {  useState } from 'react'
 import { colors, defaultStyle, formHeading, formStyles, inputOptions, inputStyling } from "../styles/styles";
 import { Button, TextInput } from 'react-native-paper';
 import Footer from '../components/Footer'
 import Header from '../components/Header';
+import { useDispatch } from 'react-redux';
+import { updatePassword } from '../redux/actions/otherAction';
+import { useMessageAndErrorOther } from "../utils/hooks"
 
-
-const ChangePassword = ({ navigation }) => {
+const ChangePassword = () => {
+    
 
 
 
@@ -17,13 +20,16 @@ const ChangePassword = ({ navigation }) => {
 
 
     const submitHandler = () => {
-        alert("Yaah")
+        // alert("Yaah")
+        dispatch(updatePassword(oldPassword,newPassword))
+        setOldPassword("")
+        setNewPassword("")
 
 
     }
 
-
-    const loading = false
+    const dispatch = useDispatch()
+    const loading = useMessageAndErrorOther(dispatch)
 
 
     return (

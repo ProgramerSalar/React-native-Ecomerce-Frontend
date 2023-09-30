@@ -1,10 +1,12 @@
 import {configureStore} from '@reduxjs/toolkit'
 import { userReducer } from './reducers/userReducer'
+import { orderReducer } from './reducers/otherReducer'
 
 
 export const store = configureStore({
     reducer:{
         user:userReducer,
+        other:orderReducer,
     }
 })
 
