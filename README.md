@@ -1,3 +1,14 @@
+color1: "#c70049", // red color
+color1_light: "rgba(227,25,99,1)",
+color1_light2: "rgba(199,0,73,0.8)",
+color2: "white",
+color3: "rgb(45,45,45)", // grenn color
+color4: "transparent",
+color5: "#f2f2f2", // light white color
+color6: "#f7f7f7", // gray color
+
+
+
 - first of all create the new app using this command: 
 $ npx create-expo-app .
 
@@ -59,3 +70,5 @@ A comprehensive, compact MIME type module.
 
 
 If you go to backend: https://github.com/ProgramerSalar/first-react-native
+
+
